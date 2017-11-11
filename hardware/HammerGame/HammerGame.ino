@@ -16,7 +16,6 @@ void setup() {
 void start(){
 
   state = HIGH;
-  
 }
 
 void loop() {

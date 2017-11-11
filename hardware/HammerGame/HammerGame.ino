@@ -16,6 +16,7 @@ void setup() {
 void start(){
 
   state = HIGH;
+  
 }
 
 void loop() {
@@ -28,7 +29,7 @@ void loop() {
 if(newVal > oldVal){
   int newVal = analogRead(FSR);
   Serial.println(newVal);  
-  delay(100);
+  delay(10);
 }
 
 }

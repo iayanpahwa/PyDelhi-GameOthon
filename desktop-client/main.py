@@ -1,6 +1,7 @@
 import serial
 import pygame
 from playsound import playsound
+from time import sleep
 
 ser = serial.Serial("/dev/tty.SLAB_USBtoUART", 9600);
 ser.close()
@@ -24,23 +25,23 @@ x =  (display_width * 0.45)
 y = (display_height * 0.8)
 def thor(x,y):
 	screen.blit(thorImg, (x,y))
-	render()
 
 def render():
 	ser.open()
 	val = ser.readline()
+	sleep(1)
 	b = myFont.render(val, 1, black)
 	screen.blit(b, (620, 30))
 	ser.close()
+	playsound('thor.wav')
 
-
+thor(x,y)
+render()
 ### main loop
-run = True
-while run:
-    thor(x,y)
-    
-    for e in pygame.event.get():
-        if e.type == pygame.QUIT:
-            run = False
-    pygame.display.flip()
-
+while True:
+	#thor(x,y)
+	#render()
+	for e in pygame.event.get():
+		if e.type == pygame.QUIT:
+			run = False
+	pygame.display.flip()
